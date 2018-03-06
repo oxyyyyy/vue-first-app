@@ -13,10 +13,10 @@
 	<script src="js/vendor/vue.js"></script>
 
 	<div id="app">
-		
+
 		<form>
 			<input type="text" v-model="addItemInputText">
-			<button @click="addItemToList">Add</button>
+			<button type="submit" @click.prevent="addItemToList">Add</button>
 		</form>
 
 		<ol>

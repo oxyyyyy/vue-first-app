@@ -11,13 +11,12 @@ new Vue({
 		todoList: []
 	},
 	methods: {
-		addItemToList(e) {
+		addItemToList() {
 			this.todoList.push({
 				id: this.id++,
 				text: this.addItemInputText
 			});
-			this.addItemInputText = '',
-			e.preventDefault();
+			this.addItemInputText = ''
 		}
 	}
 });
