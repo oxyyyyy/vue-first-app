@@ -1,12 +1,23 @@
-new Vue ({
+Vue.component('todo-item', {
+	props: ['todo'],
+	template: '<li>{{ todo.text }}</li>'
+});
+
+new Vue({
 	el: '#app',
 	data: {
-		title: 'Default text',
-		bgColor: ''
+		addItemInputText: '',
+		id: 0,
+		todoList: []
 	},
 	methods: {
-		changeText () {
-			this.title = 'Changed text!'
+		addItemToList(e) {
+			this.todoList.push({
+				id: this.id++,
+				text: this.addItemInputText
+			});
+			this.addItemInputText = '',
+			e.preventDefault();
 		}
 	}
 });

@@ -13,10 +13,17 @@
 	<script src="js/vendor/vue.js"></script>
 
 	<div id="app">
-		<p @click="changeText">Click here to change text!</p>
-		<p>{{ title }}</p>
-		<p :class="bgColor">Current color: {{ bgColor }}</p>
-		<input type="text" @input="bgColor = $event.target.value">
+		
+		<form>
+			<input type="text" v-model="addItemInputText">
+			<button @click="addItemToList">Add</button>
+		</form>
+
+		<ol>
+			<todo-item v-for="item in todoList" v-bind:todo="item" v-bind:key="item.id">
+			</todo-item>
+		</ol>
+
 	</div>
 
 	<script src="js/main.js"></script>
