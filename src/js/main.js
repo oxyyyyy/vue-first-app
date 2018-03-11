@@ -8,15 +8,24 @@ new Vue({
 	data: {
 		addItemInputText: '',
 		id: 0,
-		todoList: []
+		todoList: [],
+		isChecked: false
 	},
 	methods: {
 		addItemToList() {
-			this.todoList.push({
+			this.todoList.unshift({
 				id: this.id++,
-				text: this.addItemInputText
+				text: this.addItemInputText,
+				isChecked: this.isChecked
 			});
 			this.addItemInputText = ''
+		},
+		checkTodoItem(item) {
+			// Даём класс .checked
+			item.isChecked = !item.isChecked;
+			// Перемещаем в конец списка
+			this.todoList = this.todoList.filter(i => i.id !== item.id);
+			this.todoList.push(item);
 		}
 	}
 });
